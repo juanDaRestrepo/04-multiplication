@@ -1,13 +1,22 @@
+import { yarg } from "./config/plugins/args.plugin";
+
 const fs = require('fs');
 
-const base = 5;
+
+
+const { b:base, l:limit , s:showTable } = yarg;
+
 let fiveTable:string = `
 =====================     
-     Tabla del ${ 5 }
+     Tabla del ${ base }
 ======================\n`;
 
-for( let i = 1; i < 11; i++ ) {
-    fiveTable += `5 x ${ i } = ${ base * i }\n`;
+for( let i = 1; i <= limit; i++ ) {
+    fiveTable += `${ base } x ${ i } = ${ base * i }\n`;
+}
+
+if( showTable ) {
+    console.log(fiveTable)
 }
 
 const outputsPath = 'outputs';
